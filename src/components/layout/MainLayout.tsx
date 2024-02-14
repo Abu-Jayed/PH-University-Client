@@ -5,6 +5,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, MenuProps } from "antd";
 import React from "react";
+import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
@@ -70,6 +71,7 @@ const MainLayout = () => {
               }}
             >
               <h1>Our main content is here.</h1>
+              <Outlet></Outlet>
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
