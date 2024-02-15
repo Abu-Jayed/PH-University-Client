@@ -1,90 +1,26 @@
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, MenuProps } from "antd";
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { adminSidebarItems } from "../../routes/admin.routes";
+import { Layout } from 'antd';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
 const { Header, Content, Footer, Sider } = Layout;
-
-// const items: MenuProps["items"] = [
-//   {
-//     key: "Dashboard",
-//     label: <NavLink to={"/admin/dashboard"}>Dashboard</NavLink>,
-//   },
-//   {
-//     key: "User Management",
-//     label: "User Management",
-//     children: [
-//       {
-//         key: "Create Admin",
-//         label: <NavLink to={"/admin/create-admin"}>Create Admin</NavLink>,
-//       },
-//       {
-//         key: "Create Faculty",
-//         label: <NavLink to={"/admin/create-faculty"}>Create Faculty</NavLink>,
-//       },
-//       {
-//         key: "Create Student",
-//         label: <NavLink to={"/admin/create-student"}>Create Student</NavLink>,
-//       },
-//     ],
-//   },
-// ];
 
 const MainLayout = () => {
   return (
-    <>
-      <Layout style={{ height: "100vh" }}>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={(broken) => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
-        >
+    <Layout style={{ height: '100vh' }}>
+      <Sidebar />
+      <Layout>
+        <Header style={{ padding: 0 }} />
+        <Content style={{ margin: '24px 16px 0' }}>
           <div
             style={{
-              color: "whitesmoke",
-              height: "4rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              padding: 24,
+              minHeight: 360,
             }}
           >
-            <h1>Ph Uni</h1>
+            <Outlet />
           </div>
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={["4"]}
-            items={adminSidebarItems}
-          />
-        </Sider>
-        <Layout>
-          <Header style={{ padding: 0 }} />
-          <Content style={{ margin: "24px 16px 0" }}>
-            <div
-              style={{
-                padding: 24,
-                minHeight: 360,
-              }}
-            >
-              <h1>Our main content is here.</h1>
-              <Outlet></Outlet>
-            </div>
-          </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-          </Footer>
-        </Layout>
+        </Content>
       </Layout>
-    </>
+    </Layout>
   );
 };
 
